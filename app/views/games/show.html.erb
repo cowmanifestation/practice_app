@@ -4,8 +4,10 @@
 <table id=board>
   <tr>
     <td class="left top"><a href="#"><%= @game.board[0][0] || 'NOTHING HERE' %></a></td>
-    <td class="top vertical-mid"><a href="#"><%= @game.play(0,1) %></a></td>
-    <td class="top right"><a href="#"></a></td>
+    <!-- We were trying to do something like this - set up play as a route and a controller method. -->
+    <!--<td class="top vertical-mid"><a href="#"><%= # link_to play_path(0,1) %></a></td>-->
+    <td class="top right"><a href="#"><%= @game.play(0,1) %></a></td>
+    <td class="top right"><a href="#"><%= @game.play(0,2) %></a></td>
   </tr>
   
   <tr>

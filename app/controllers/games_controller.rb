@@ -32,20 +32,23 @@ class GamesController < ApplicationController
   def destroy
   end
 
-  def play
-    unless Game.exists?(params[:id])
-      render :success => false,
-             :id => params[:id],
-             :status => 404
-    else
-      game = Game.find(params[:id])
-      success = game.play
+  def play(row, column)
+    # unless Game.exists?(params[:id])
+    #   render :success => false,
+    #          :id => params[:id],
+    #          :status => 404
+    # else
+    #   game = Game.find(params[:id])
+    #   success = game.play
 
-      render :success => success,
-             :id => game.id,
-             :game => game,
-             :state => game.status,
-             :status => (success ? 200 : 400)
-    end
+    #   render :success => success,
+    #          :id => game.id,
+    #          :game => game,
+    #          :state => game.status,
+    #          :status => (success ? 200 : 400)
+    # end
+    @game = Game.find(params[:id])
+    @game.play(row, column)
+    redirect_to :action => 'show', :id => @game.id
   end
 end
